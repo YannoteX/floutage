@@ -30,5 +30,5 @@ L’objectif de ce mini-projet est de suivre automatiquement un ou plusieurs vis
 
 ### Retranscription des images
 
-- Réception des images traitées
-- retranscription de la vidéo à partir des images traitées
+- Réception des images traitées : la réception échoue (risque faible)
+- retranscription de la vidéo à partir des images traitées, l'affichage des images prend trop de temps par rapport au traitement (risque faible)
