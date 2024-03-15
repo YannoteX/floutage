@@ -10,7 +10,7 @@ class Display:
         self.__graph = self.__fig.add_subplot()
 
     def refresh(self, rgba_image) -> None:
-
+        plt.cla()
         self.__graph.imshow(rgba_image)
         self.__fig.canvas.draw()
         self.__fig.canvas.flush_events()
