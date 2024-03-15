@@ -8,15 +8,20 @@ import skimage.io as io
 class FrameProcessor:
     def __init__(self, frame, step_ratio, scale_factor, blur_strength):
         self.frame = frame
-        self.image = io.imread(frame)
+        self.image = None
         self.gray_image = frame
-        self.shape = self.image.shape
-        self.min_size = (100, 100)
-        self.max_size = (self.shape[0]*0.85, self.shape[1]*0.85)
+        self.min_size = None
+        self.max_size = None
         self.step_ratio = step_ratio
         self.scale_factor = scale_factor
         self.blur_strength = blur_strength
         self.display = Display()
+
+    def setup(self):
+        self.image = io.imread(self.frame)
+        shape = self.image.shape
+        self.min_size = (100, 100)
+        self.max_size = (shape[0]*0.85, shape[1]*0.85)
 
     def enhance(self):
         enhancer = Enhancer()
@@ -38,5 +43,6 @@ class FrameProcessor:
         pass
 
     def process_frame(self):
+        self.setup()
         self.enhance()
         self.blur()

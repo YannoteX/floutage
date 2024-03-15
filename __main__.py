@@ -2,8 +2,8 @@ from floutage.capture import Capture
 from floutage.frameprocessor import FrameProcessor
 
 # Sample parameters
-step_ratio = 1
-scale_factor = 1.1
+step_ratio = 1.35 # Increase value to improve algorithm processing speed at the cost of accuracy
+scale_factor = 1.15 # Same deal
 destination = "frame.jpg"
 blur_strength = 70
 
