@@ -2,12 +2,11 @@ import skimage
 from skimage import io
 from skimage.feature import Cascade
 import matplotlib.pyplot as plt
-import matplotlib
 from matplotlib import patches
 
 
 class FaceFinder:
-    def __init__(self, image, step_ratio, scale_factor, min_size, max_size, destination) -> None:
+    def __init__(self, image, step_ratio, scale_factor, min_size, max_size, destination="image.jpg") -> None:
 
         self.__image = image
         self.__destination = destination
