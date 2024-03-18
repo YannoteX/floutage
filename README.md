@@ -32,3 +32,25 @@ L’objectif de ce mini-projet est de suivre automatiquement un ou plusieurs vis
 
 - Réception des images traitées : la réception échoue (risque faible)
 - retranscription de la vidéo à partir des images traitées, l'affichage des images prend trop de temps par rapport au traitement (risque faible)
+
+
+## Méthode
+
+La méthode appliquée dite Viola et Jones permet de trouver les visages dans une image. En la testant, nous nous sommes rendus compte qu'elle s'avère très performante mais couteuse en temps de calcul. Afin de réduire ce temps nécessaire, nous avons pris différents décisions:
+
+### Amélioration de l'image
+Nous avons choisi d'améliorer les capacités de détection et augmentant le contraste de l'image par la méthode d'égalisation de l'histogramme d'intensités, et de la convolution d'image afin de faire ressortir les plus hautes fréquence. Nous avons également essayé différents algorithmes de filtration du bruit (variation totale, bilateral) sans obtenir de résultats concluant sur le temps de calcul économisé, il s'est également avéré inutile d'appliquer un algorithme d'amélioration de la netteté. "L'amélioration" de l'image se résume donc à améliorer le contrast afin d'améliorer la stabilité de la détection et d'économiser du temps de calcul.
+
+### Optimisation 
+Nous nous sommes rendus compte que la plupart des images détectées sur une webcam se situent vers le centre de l'image, afin d'améliorer le temps de calcul, nous avons décidé d'appliqué la méthode sur 85% de l'écran en partant du centre afin de ne pas calculer inutilement les bords de l'écran où le visage ne se trouve que très occasionellement.
+
+## Affichage du visage flouté
+
+Afin de retranscrire la vidéo modifiée, nous avons utilisé le mode interactif du module pyplot, cela permet de mettre à jour une figure pendant l'exécution du programme.
+
+## Captation de la vidéo
+Opencv permet de récupérer des images issues d'un flux vidéo capté par une caméra sans devoir passer par de l'asynchrone ou du threading. Cela permet d'éxécuter notre code sans avoir à gérer le framerate.
+
+## Retour d'expérience
+
+Grâce à l'efficacité de la méthode de Viola et Jones, beaucoup des risques identifiés n'ont pas de difficultés à réaliser ce projet, le temps pris à l'affichage et la captation de la vidéo est négligeable par rapport au temps de traitement
